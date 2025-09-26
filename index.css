@@ -364,3 +364,16 @@ body {
 
 
 
+.btn-admin {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.btn-admin:hover {
+  background: #0056b3;
+}

@@ -104,15 +104,19 @@ button, a[href*="checkout"], td a {
   transition: transform 0.2s, background 0.3s;
 }
 
-button {
-  background: #528fff;
-  color: #fff;
+button, a[href*="order.php"], td a {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.3s;
 }
 
-button:hover {
-  background: #1e40e9;
-  transform: scale(1.05);
-}
+
 
 
 
@@ -144,6 +148,15 @@ input[type="number"]:focus {
   animation: bounce 0.5s;
 }
 
+a[href*="order.php"] {
+  background: #0080ff;
+  color: #fff;
+}
+
+a[href*="order.php"]:hover {
+  background: #0b3cff;
+  transform: scale(1.05);
+}
 
 
 a[href*="checkout"] {

@@ -16,7 +16,7 @@ $items = $conn->query("SELECT * FROM order_items WHERE order_id=$id");
 <body>
 
 <div class="back-link-bar">
-  <a href="index.html" class="back-link">กลับหน้าแรก</a>
+  <a href="index.php" class="back-link">กลับหน้าแรก</a>
 </div>
 
 <div class="receipt">

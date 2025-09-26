@@ -1,14 +1,41 @@
 <?php
 include 'db_connect.php';
 
+// ฟังก์ชันอัปโหลดรูป
+function uploadImage($fileInput){
+    if(isset($_FILES[$fileInput]) && $_FILES[$fileInput]['error'] == 0){
+        $targetDir = "uploads/";
+        if(!is_dir($targetDir)) mkdir($targetDir, 0777, true);
+
+        $fileName = time() . "_" . basename($_FILES[$fileInput]["name"]);
+        $targetFile = $targetDir . $fileName;
+
+        $check = getimagesize($_FILES[$fileInput]["tmp_name"]);
+        if($check !== false){
+            if(move_uploaded_file($_FILES[$fileInput]["tmp_name"], $targetFile)){
+                return $targetFile;
+            }
+        }
+    }
+    return null;
+}
+
 // เพิ่มสินค้า
 if (isset($_POST['add'])) {
     $name  = $_POST['name'];
     $price = $_POST['price'];
-    $image = $_POST['image'];
 
-    $sql = "INSERT INTO products (name, price, image) VALUES ('$name', '$price', '$image')";
-    $conn->query($sql);
+    // อัปโหลดไฟล์
+    $image = uploadImage("image");
+    // ถ้าไม่มีไฟล์ ใช้ลิงก์แทน
+    if(!$image && !empty($_POST['image_url'])){
+        $image = $_POST['image_url'];
+    }
+
+    if($image){
+        $sql = "INSERT INTO products (name, price, image) VALUES ('$name', '$price', '$image')";
+        $conn->query($sql);
+    }
 }
 
 // อัปเดตสินค้า
@@ -16,15 +43,23 @@ if (isset($_POST['update'])) {
     $id    = $_POST['id'];
     $name  = $_POST['name'];
     $price = $_POST['price'];
-    $image = $_POST['image'];
 
-    $sql = "UPDATE products SET name='$name', price='$price', image='$image' WHERE id=$id";
+    $image = uploadImage("image");
+    if(!$image && !empty($_POST['image_url'])){
+        $image = $_POST['image_url'];
+    }
+
+    if($image){
+        $sql = "UPDATE products SET name='$name', price='$price', image='$image' WHERE id=$id";
+    } else {
+        $sql = "UPDATE products SET name='$name', price='$price' WHERE id=$id";
+    }
     $conn->query($sql);
 }
 
 // ลบสินค้า
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
     $conn->query("DELETE FROM products WHERE id=$id");
 }
 ?>
@@ -34,27 +69,27 @@ if (isset($_GET['delete'])) {
 <head>
     <meta charset="UTF-8">
     <title>Admin - จัดการสินค้า</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f2f2f2; }
-        .container { width: 900px; margin: 30px auto; background: white; padding: 20px; border-radius: 8px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table, th, td { border: 1px solid #ccc; }
-        th, td { padding: 10px; text-align: center; }
-        input[type="text"], input[type="number"] { width: 90%; padding: 5px; }
-        .btn { padding: 5px 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        .btn-danger { background: #dc3545; text-decoration:none; }
-        .btn-edit { background: #28a745; text-decoration:none; }
-    </style>
+    <link rel="stylesheet" href="addproduct.css">
 </head>
 <body>
+
+<div class="back-link-bar">
+  <a href="index.php" class="back-link">กลับหน้าแรก</a>
+</div>
+
 <div class="container">
     <h2>แอดมิน - จัดการสินค้า</h2>
 
     <!-- ฟอร์มเพิ่มสินค้า -->
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="ชื่อสินค้า" required>
         <input type="number" name="price" placeholder="ราคา" step="0.01" required>
-        <input type="text" name="image" placeholder="ลิงก์รูปภาพ" required>
+        
+        <p><b>เลือกรูปภาพ (อัปโหลดหรือใส่ลิงก์):</b></p>
+        <input type="file" name="image" accept="image/*">
+        <br><br>
+        <input type="text" name="image_url" placeholder="ลิงก์รูปภาพ (เช่น https://...jpg)">
+        
         <button type="submit" name="add" class="btn">เพิ่มสินค้า</button>
     </form>
 
@@ -72,21 +107,24 @@ if (isset($_GET['delete'])) {
         while ($row = $result->fetch_assoc()):
         ?>
         <tr>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <td><?= $row['id'] ?></td>
                 <td><input type="text" name="name" value="<?= htmlspecialchars($row['name']) ?>"></td>
                 <td><input type="number" name="price" value="<?= $row['price'] ?>"></td>
                 <td>
-                    <input type="text" name="image" value="<?= $row['image'] ?>">
-                    <br>
-                    <img src="<?= $row['image'] ?>" alt="" width="60">
+                    <img src="<?= $row['image'] ?>" alt="" width="60"><br>
+                    <input type="file" name="image" accept="image/*"><br><br>
+                    <input type="text" name="image_url" value="<?= $row['image'] ?>">
                 </td>
                 <td>
                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
                     <button type="submit" name="update" class="btn btn-edit">อัปเดต</button>
-                    <a href="admin.php?delete=<?= $row['id'] ?>" class="btn btn-danger" onclick="return confirm('ยืนยันการลบ?')">ลบ</a>
-                </td>
             </form>
+            <form method="post" style="display:inline;" onsubmit="return confirm('ยืนยันการลบ?')">
+                <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                <button type="submit" name="delete" class="btn btn-danger">ลบ</button>
+            </form>
+                </td>
         </tr>
         <?php endwhile; ?>
     </table>

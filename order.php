@@ -2,6 +2,24 @@
 include 'db_connect.php';
 ?>
 
+
+
+<link rel="stylesheet" href="order.css">
+ <!--  Start Navbar -->
+<nav class="navbar">
+    <div class="logo">Sugar & Smile</div>
+    <ul class="nav-links">
+      <li><a href="index.php">หน้าแรก</a></li>
+      <li><a href="#menu">สินค้า</a></li>
+      <li><a href="#promosion">โปรโมชั่น</a></li>
+      <li><a href="cart.php">ตระกร้า</a></li>
+      <li><a href="#">เกี่ยวกับเรา</a></li>
+      <li><a href="#">ติดต่อเรา</a></li>
+
+      
+    </ul>
+</nav>
+<!-- End Navbar -->
 <section class="best-seller">
   <div class="menu-container">
     <?php

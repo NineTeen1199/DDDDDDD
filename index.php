@@ -40,18 +40,18 @@ $result = $conn->query($sql);
     <div class="logo">Sugar & Smile</div>
     <ul class="nav-links">
       <li><a href="#">หน้าแรก</a></li>
-      <li><a href="#menu">สินค้า</a></li>
+      <li><a href="order.php">สินค้า</a></li>
       <li><a href="#promosion">โปรโมชั่น</a></li>
       <li><a href="cart.php">ตระกร้า</a></li>
       <li><a href="#">เกี่ยวกับเรา</a></li>
       <li><a href="#">ติดต่อเรา</a></li>
 
-      <?php if ($isAdmin): ?>
-        <li><a href="admin_panel.php" class="admin-btn">Panel Admin</a></li>
-      <?php endif; ?>
+      
     </ul>
 </nav>
 <!-- End Navbar -->
+
+
 
 
   <!-- Start Hero Section -->
@@ -68,7 +68,7 @@ $result = $conn->query($sql);
 
       <div class="buttons">
         <a href="order.php" class="btn-primary">สั่งซื้อ</a>
-        <a href="register_form.html" class="btn-secondary">สมัครสมาชิก</a>
+        <a href="login_form.html" class="btn-secondary">สมัครสมาชิก</a>
       </div>
 
 

@@ -3,18 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>สมัครสมาชิก</title>
+  <link rel="stylesheet" href="register_form.css">
 </head>
 <body>
+<div class="back-link-bar">
+  <a href="index.php" class="back-link">กลับหน้าแรก</a>
+</div>
+
+<div class="form-container">
   <h2>สมัครสมาชิก</h2>
+   <div class="underline"></div>
   <form method="post" action="register.php">
+    <div class="input-group">
     <input type="text" name="username" placeholder="ชื่อผู้ใช้" required><br><br>
+    </div>
+    <div class="input-group">
     <input type="password" name="password" placeholder="รหัสผ่าน" required><br><br>
-    
+    </div>
    
 
     <button type="submit">สมัครสมาชิก</button>
   </form>
 
   <p>มีบัญชีแล้ว? <a href="login_form.html">เข้าสู่ระบบ</a></p>
+
+  </div>
 </body>
 </html>

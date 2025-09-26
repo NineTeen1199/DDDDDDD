@@ -24,10 +24,15 @@ if ($result->num_rows > 0) {
         } else {
             header("Location: index.php");
         }
+        exit;
     } else {
-        echo "❌ รหัสผ่านไม่ถูกต้อง";
+        // รหัสผ่านไม่ถูกต้อง
+        header("Location: login_form.html?error=wrong_password");
+        exit;
     }
 } else {
-    echo "❌ ไม่พบชื่อผู้ใช้นี้";
+    // ไม่พบผู้ใช้
+    header("Location: login_form.html?error=not_member");
+    exit;
 }
 ?>

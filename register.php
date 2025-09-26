@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,14 +15,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // ตรวจสอบว่ามี username ซ้ำหรือไม่
     $check = $conn->query("SELECT * FROM users WHERE username='$username'");
     if ($check->num_rows > 0) {
-        echo "❌ ชื่อนี้ถูกใช้แล้ว";
+        echo "<script>alert('❌ ชื่อนี้ถูกใช้แล้ว'); window.location='register_form.html';</script>";
     } else {
         $sql = "INSERT INTO users (username, password, role_id) 
                 VALUES ('$username', '$hashed', '$role_id')";
         if ($conn->query($sql)) {
-            echo "✅ สมัครสมาชิกสำเร็จ <a href='login_form.html'>เข้าสู่ระบบ</a>";
+            // ดึงข้อมูลผู้ใช้ใหม่เพื่อสร้าง session
+            $_SESSION['username'] = $username;
+            $_SESSION['role'] = 'user';
+
+            // ไปหน้า index.php อัตโนมัติ
+            header("Location: index.php");
+            exit;
         } else {
-            echo "❌ เกิดข้อผิดพลาด: " . $conn->error;
+            echo "<script>alert('❌ เกิดข้อผิดพลาด'); window.location='register_form.html';</script>";
         }
     }
 }

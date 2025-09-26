@@ -3,13 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>เข้าสู่ระบบ</title>
+  <link rel="stylesheet" href="login_form.css">
 </head>
 <body>
+<div class="back-link-bar">
+  <a href="index.php" class="back-link">กลับหน้าแรก</a>
+</div>
+
+
+<div class="form-container">
   <h2>เข้าสู่ระบบ</h2>
+  <div class="underline"></div>
   <form method="post" action="login.php">
+    <div class="input-group">
     <input type="text" name="username" placeholder="ชื่อผู้ใช้" required><br><br>
+    </div>
+       <div class="input-group">
     <input type="password" name="password" placeholder="รหัสผ่าน" required><br><br>
+    </div>
     <button type="submit">เข้าสู่ระบบ</button>
+
+      <p>ยังไม่ได้เป็นสมาชิก?<a href="register_form.html">สมัครสมาชิก</a></p>
   </form>
+
+  
+</div>
 </body>
 </html>

@@ -24,7 +24,7 @@ if (isset($_POST['add'])) {
 }
 
 // อัปเดตจำนวนสินค้า
-if(isset($_POST['update'])) {
+if(isset($_POST['qty'])){
     foreach($_POST['qty'] as $product_id => $qty){
         if($qty > 0){
             $_SESSION['cart'][$product_id]['quantity'] = $qty;
@@ -44,21 +44,26 @@ if(isset($_GET['remove'])){
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ตะกร้าสินค้า</title>
-    <link rel="stylesheet" href="cart.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตะกร้าสินค้า</title>
+  <link rel="stylesheet" href="cart.css">
+  <script>
+    // ให้ submit form อัตโนมัติเมื่อเปลี่ยนจำนวน
+    function autoUpdate() {
+      document.getElementById("cart-form").submit();
+    }
+  </script>
 </head>
 <body>
 
 <div class="back-link-bar">
-  <a href="index.html" class="back-link">กลับหน้าแรก</a>
+  <a href="index.php" class="back-link">กลับหน้าแรก</a>
 </div>
-
 
 <h2>ตะกร้าสินค้า</h2>
 
-<form method="POST">
+<form method="POST" id="cart-form">
 <table>
   <tr>
     <th>สินค้า</th>
@@ -77,10 +82,15 @@ if(isset($_GET['remove'])){
     <td><?= htmlspecialchars($item['product']) ?></td>
     <td><?= number_format($item['price'],2) ?></td>
     <td>
-      <input type="number" name="qty[<?= $index ?>]" value="<?= $item['quantity'] ?>" min="0">
+      <!-- เมื่อเปลี่ยนจำนวนจะ auto submit -->
+      <input type="number" name="qty[<?= $index ?>]" 
+             value="<?= $item['quantity'] ?>" 
+             min="0" onchange="autoUpdate()">
     </td>
     <td><?= number_format($sum,2) ?></td>
-    <td><a href="cart.php?remove=<?= $index ?>">ยกเลิกทั้งหมด</a></td>
+    <td>
+      <a href="cart.php?remove=<?= $index ?>">ยกเลิกทั้งหมด</a>
+    </td>
   </tr>
   <?php endforeach; ?>
   <tr>
@@ -89,14 +99,15 @@ if(isset($_GET['remove'])){
   </tr>
 </table>
 
-
-
 <div class="button-container">
- <button type="submit" name="update">อัปเดตจำนวน</button>
+  <!-- ไม่ต้องมีปุ่มอัปเดตแล้วก็ได้ แต่จะเก็บไว้ก็ได้ -->
+  <!-- <button type="submit">อัปเดตจำนวน</button> -->
+    <a href="order.php">ดูสินค้าอื่น</a>
   <a href="checkout.php">ชำระเงิน</a>
+
 </div>
 
-
+</form>
 
 </body>
 </html>

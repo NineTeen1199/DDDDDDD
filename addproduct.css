@@ -1,0 +1,123 @@
+/* พื้นหลังและฟอนต์ */
+    body { 
+        font-family: 'Arial', sans-serif; 
+        background: #e6f0fa; /* ฟ้าอ่อน */
+        margin: 0;
+        padding: 0;
+    }
+
+   /* ปุ่มกลับหน้าแรก */
+.back-link-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  justify-content: flex-end;
+  padding: 15px 50px;
+  z-index: 1000;
+}
+
+.back-link {
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+    .container { 
+        width: 900px; 
+        margin: 80px auto; 
+        background: #ffffff; 
+        padding: 20px; 
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #004080;
+        margin-bottom: 20px;
+    }
+
+    form input[type="text"], 
+    form input[type="number"], 
+    form input[type="file"] { 
+        width: 90%; 
+        padding: 8px; 
+        border: 1px solid #a0c4ff; 
+        border-radius: 6px; 
+        margin-bottom: 10px;
+        outline: none;
+    }
+
+    form input[type="text"]:focus,
+    form input[type="number"]:focus,
+    form input[type="file"]:focus {
+        border-color: #3399ff;
+        box-shadow: 0 0 5px rgba(51,153,255,0.5);
+    }
+
+    .btn { 
+        padding: 8px 16px; 
+        background: #3399ff; 
+        color: white; 
+        border: none; 
+        border-radius: 6px; 
+        cursor: pointer;
+        transition: 0.2s all;
+    }
+
+    .btn:hover {
+        background: #007bff;
+        transform: scale(1.05);
+    }
+
+    .btn-danger { 
+        background: #ff6666; 
+    }
+
+    .btn-danger:hover {
+        background: #ff4d4d;
+        transform: scale(1.05);
+    }
+
+    .btn-edit { 
+        background: #66cc66; 
+    }
+
+    .btn-edit:hover {
+        background: #33cc33;
+        transform: scale(1.05);
+    }
+
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-top: 20px; 
+        background: #f0f8ff; /* ฟ้าอ่อนสำหรับตาราง */
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    table, th, td { 
+        border: 1px solid #cce0ff; 
+    }
+
+    th, td { 
+        padding: 10px; 
+        text-align: center; 
+    }
+
+    th {
+        background: #b3d1ff; /* ฟ้าเข้มหัวตาราง */
+        color: #004080;
+    }
+
+    td img {
+        border-radius: 6px;
+        border: 1px solid #a0c4ff;
+    }
