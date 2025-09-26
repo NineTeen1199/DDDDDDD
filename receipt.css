@@ -1,0 +1,113 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+/* พื้นหลัง */
+body {
+  font-family: "Prompt", sans-serif;
+  background: #90c9ff;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ปุ่มกลับหน้าแรก */
+.back-link-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  justify-content: flex-end;
+  padding: 15px 50px;
+  z-index: 1000;
+}
+
+.back-link {
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* กล่องใบเสร็จ */
+.receipt {
+  background: rgb(121, 186, 255);
+  width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  animation: popIn 0.8s ease-out;
+
+  margin-top: 120px; /* ✅ เว้นระยะห่างจากปุ่มกลับ */
+}
+
+/* หัวใบเสร็จ */
+.receipt-header {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 15px;
+}
+
+/* ข้อมูลลูกค้า */
+.customer-info {
+    background-color: #ffffff;
+  padding: 0 25px 15px 25px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ตารางสินค้า */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  animation: fadeUp 1.2s ease;
+}
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background: #4a6eff;
+  color: white;
+}
+tr:nth-child(even) td {
+  background: #f9f9f9;
+}
+
+/* รวมทั้งหมด */
+.total-row td {
+  background: #7b95ff;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes popIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}

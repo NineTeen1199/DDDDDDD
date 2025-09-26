@@ -1,0 +1,194 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+/* พื้นหลัง */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #b8d9ff;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ปุ่มกลับหน้าแรก */
+.back-link-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  justify-content: flex-end;
+  padding: 15px 50px;
+  z-index: 1000;
+}
+
+.back-link {
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* หัวข้อ */
+h2 {
+  text-align: center;
+  margin: 50px 0 2px 0;
+  color: #2e2e2e;
+  animation: slideDown 0.8s ease;
+  font-size: 50px;
+}
+
+/* ตาราง */
+table {
+  border-collapse: collapse;
+  width: 1000px;       /* ✅ กำหนดความกว้างคงที่ */
+  margin: 20px auto;   /* ✅ จัดกึ่งกลาง */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease;
+  table-layout: fixed; /* ✅ คอลัมน์ไม่หด */
+}
+
+/* บังคับให้แต่ละ cell ขนาดคงที่ */
+th, td {
+  width: 20%;           /* ✅ แบ่ง 5 คอลัมน์เท่า ๆ กัน */
+  text-align: center;
+}
+
+/* ให้ตารางสูงขั้นต่ำ (ไม่หดตอนเหลือสินค้าเดียว) */
+table tbody {
+  min-height: 300px;   /* ✅ ปรับความสูงขั้นต่ำได้ตามชอบ */
+  display: table-row-group;
+}
+
+th {
+  background: #56a5ff;
+  padding: 12px;
+  font-size: 18px;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+tr:hover td {
+  background: #d3eaff;
+}
+
+/* ปุ่ม */
+button, a[href*="checkout"], td a {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.3s;
+}
+
+button {
+  background: #528fff;
+  color: #fff;
+}
+
+button:hover {
+  background: #1e40e9;
+  transform: scale(1.05);
+}
+
+
+
+td a {
+  background: #528fff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+
+}
+
+td a:hover {
+  background: #c62828;
+ transform: scale(1.05);
+}
+
+/* Input number */
+input[type="number"] {
+  padding: 5px;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.3s;
+}
+
+input[type="number"]:focus {
+  border: 2px solid #8099ff;
+  animation: bounce 0.5s;
+}
+
+
+
+a[href*="checkout"] {
+  background: #0080ff;
+  color: #fff;
+}
+
+a[href*="checkout"]:hover {
+  background: #0b3cff;
+  transform: scale(1.05);
+}
+
+td a {
+  background: #528fff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 15px;
+
+}
+
+td a:hover {
+  background: #c62828;
+ transform: scale(1.05);
+}
+
+/* Input number */
+input[type="number"] {
+  padding: 5px;
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border 0.3s;
+}
+
+input[type="number"]:focus {
+  border: 2px solid #0b3cff;
+  animation: bounce 0.5s;
+}
+
+/* เพิ่ม container รอบปุ่ม */
+.button-container {
+  display: flex;       /* จัดให้อยู่ข้างกัน */
+  justify-content: center; /* จัดกึ่งกลาง */
+  gap: 10px;           /* ระยะห่างระหว่างปุ่ม */
+  margin: 20px 0;      /* ระยะห่างจากส่วนอื่น */
+}
+

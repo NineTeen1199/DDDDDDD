@@ -1,0 +1,366 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  color: #000000;
+  font-size: 30px;
+}
+
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero */
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px 50px 50px;
+  
+  /* ใส่รูปพื้นหลังเต็มพื้นที่ */
+  background: url("m1/newใบไม้.jpg") no-repeat center center/cover;
+
+  /* กำหนดความสูงให้ดูเต็มตา */
+  min-height: 100vh;
+
+  /* เพิ่มเลเยอร์โปร่งใสให้ตัวหนังสืออ่านง่าย */
+  position: relative;
+  color: #333;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background: rgba(255, 255, 255, 0.6); ฟิลเตอร์สีขาวใส */
+  z-index: 0;
+}
+
+.text-content, .image-content {
+  position: relative; /* เพื่อให้เนื้อหามาอยู่เหนือ ::before */
+  z-index: 1;
+}
+
+.text-content {
+  max-width: 800px;
+  color: #333;
+}
+
+.text-content h1 {
+  font-size: 70px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  font-size:20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+span {
+  color: #1a8cff;
+}
+
+
+
+
+
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* ปุ่มหลัก */
+.btn-primary {
+  text-decoration: none;
+  padding: 12px 25px;
+  background-color: #4db5ff;
+  color: #fff;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-primary:hover {
+  background-color: #1a8cff;
+  transform: scale(1.08);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* ปุ่มรอง */
+.btn-secondary {
+  text-decoration: none;
+  padding: 12px 25px;
+  background: #fff;
+  color: #000;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-secondary:hover {
+  background: #f0f0f0;
+  transform: scale(1.08);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+
+.image-content img {
+  max-width: 700px;
+   padding: 30px 50px 50px 50px;
+}
+
+
+
+
+
+
+
+/* Menu Icons */
+.menu-icons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 10px 10px;
+  background: #ffffff;
+ 
+
+
+}
+
+.menu-icons .icon {
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+   transition: transform 0.3s ease; /* ให้รูปเด้งพร้อมกัน */
+}
+
+.menu-icons img {
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+.menu-icons .icon:hover img {
+  transform: translateY(-10px);
+}
+
+/* Best Seller */
+.best-seller {
+ 
+  justify-content: space-between;
+  align-items: center;
+  padding: 180px 50px 50px 50px;
+  
+  /* ใส่รูปพื้นหลังเต็มพื้นที่ */
+  background: url("m1/new.jpg") no-repeat center center/cover;
+
+  /* กำหนดความสูงให้ดูเต็มตา */
+  min-height: 100vh;
+
+  /* เพิ่มเลเยอร์โปร่งใสให้ตัวหนังสืออ่านง่าย */
+  position: relative;
+  color: #333;
+}
+
+.title-box {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title-box h2 {
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #333;
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 5px 7px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.img-box {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.item h3 {
+  font-size: 16px;
+  margin: 8px 0 4px;
+  color: #333;
+}
+
+.item p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ปุ่มสินค้า */
+.item button {
+  margin-top: 10px;
+  background: #ff6fa5;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.item button:hover {
+  background: #e85c92;
+  transform: translateY(-3px) scale(1.05);
+}
+
+
+
+
+
+
+
+body {
+  margin: 0;
+  font-family: "Prompt", sans-serif;
+  background-color: #f9c2d3; /* สีชมพูพื้นหลัง */
+  color: #333;
+}
+
+.promo-section {
+  padding: 100px;
+  text-align: center; /* สำหรับ h1 */
+}
+
+.promo-title {
+  color: #fff;
+  font-size: 70px;
+  margin-bottom: 40px;
+}
+
+.promo-content {
+  display: flex;
+  align-items: start;
+  justify-content:center; /* <-- เปลี่ยนจาก center เป็น flex-start */
+  gap:100px;
+}
+
+/* วิดีโอด้านซ้าย */
+.video-box {
+  flex: 0 0 400px; /* กำหนดความกว้าง 600px */
+  height: 600px;   /* กำหนดความสูง 800px */
+  display: flex;
+  justify-content: flex-start;
+ 
+}
+
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* เนื้อหาด้านขวา */
+.text-box {
+  flex: 0 0 1000px; /* ความกว้างเท่ากับวิดีโอ */
+  height: 800px;   /* ความสูงเท่ากับวิดีโอ */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+}
+
+.text-box ul {
+  padding-left: none;
+  margin-bottom: 20px;
+}
+
+.text-box ul li {
+  margin-bottom: 5px;
+  line-height: 1.6;
+  font-size: 25px; /* ปรับขนาดตามความเหมาะสม */
+  color: #000;
+  
+}
+
+.text-box p {
+  line-height: 1.8;
+  font-size: 25px;
+}
+
+
+
+
